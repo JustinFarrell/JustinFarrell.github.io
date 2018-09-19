@@ -7,6 +7,13 @@
 	-->	
 	<head>
 		<title> This is my page.</title>
+	<script>
+function blinker() {
+	$('.blinking').fadeOut(500);
+	$('.blinking').fadeIn(500);
+}
+setInterval(blinker, 1000);
+</script>	
 	<style>
 		header {
 			color: purple;
@@ -16,13 +23,18 @@
 		h2 {
 			color:lawngreen;
 		}
-	</style>	
+	</style>
+	
 	</head>
 
 	<body>
+		
+
 		<div>
 			<header style="text-align: center">
-				<h1 style="color:red;">Index</h1>
+				
+				<h1 style="color:red;"><a href="house.html"><p class="blinking">Want to Buy a house? Click here!!!!</p></a></h1>
+				
 				<h2>2</h2>
 				<h3>3</h3>
 				<h4>4</h4>
