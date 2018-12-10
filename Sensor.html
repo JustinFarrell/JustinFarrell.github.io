@@ -1,0 +1,106 @@
+
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='//static.codepen.io/assets/editor/live/console_runner-1df7d3399bdc1f40995a35209755dcfd8c7547da127f6469fd81e5fba982f6af.js'></script><script src='//static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/dudleystorey/pen/yaWzzR" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style class="cp-pen-styles">@font-face {
+  font-family: 'Sucrose Bold Two';
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/sucrose.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'IM Fell French Canon Pro';
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/im-fell-french-canon-pro.woff2") format("woff2");
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/mountain-range.jpg) no-repeat;
+  padding-top: 61.93333333%;
+  background-size: cover;
+  font-family: 'Sucrose Bold Two';
+}
+
+header img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45.8%;
+}
+
+header h1 {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  font-size: 12vw;
+  line-height: .8;
+  margin-top: 0;
+  text-align: center;
+}
+
+header h1 span {
+  display: block;
+  font-size: 8.75vw;
+}
+
+main {
+  background: #fff;
+  position: relative;
+  border: 1px solid #fff;
+  font-family: 'IM Fell French Canon Pro';
+  font-size: 1.4rem;
+  padding: 2rem 25%;
+  line-height: 1.6;
+}
+
+@media all and (max-width: 400px) {
+  main {
+    padding: 2rem;
+  }
+}
+</style></head><body>
+<base href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/">
+<header>
+	<h1>Home <span>of the</span> Data</h1>
+	<img src="mountain-range-front.png">
+</header>
+<main>
+  <iframe width="450" height="260" id="rotator" src="https://thingspeak.com/channels/609560/charts/1?bgcolor=%23ffffff&color=%23d62020&days=9000&dynamic=true&title=Temperature+%28C%29&type=line"></iframe>
+
+<script>
+// start when the page is loaded
+window.onload = function() {
+
+  var urls = [
+    "https://thingspeak.com/channels/609560/charts/1?bgcolor=%23ffffff&color=%23d62020&days=9000&dynamic=true&title=Temperature+%28C%29&type=line",
+    "https://thingspeak.com/channels/609560/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=9000&title=Light+Level+%28Lux%29&type=line",
+    "https://thingspeak.com/channels/609560/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=90000&title=Node+Battery+Level&type=line&yaxis=Volts",
+    "https://thingspeak.com/channels/609560/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=9000&title=Last+RSSi&type=line&yaxis=dBm"
+  ];
+
+  var index = 1;
+  var el = document.getElementById("rotator");
+
+  setTimeout(function rotate() {
+
+    if ( index === urls.length ) {
+      index = 0;
+    }
+
+    el.src = urls[index];
+    index  = index + 1;
+
+    // continue rotating iframes
+    setTimeout(rotate, 5000);
+
+  }, 5000); // 5000ms = 5s
+};
+</script>
+</main>
+
+</body></html>
